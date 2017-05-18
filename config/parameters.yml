@@ -1,0 +1,12 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: auth
+    database_user: tennison_db_user
+    database_password: 9U2i5Y9oS2z5J3q3
+    mailer_transport: smtp
+    mailer_host: 'smtp.sparkpostmail.com:587'
+    mailer_user: SMTP_Injection
+    mailer_password: 06c1f8061297f69f13f5dedf6889ea519839bb16
+    secret: 9f7b1db9af61f1d00d83dbffb12268eba465d05f
