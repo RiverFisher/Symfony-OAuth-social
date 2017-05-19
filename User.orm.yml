@@ -1,0 +1,74 @@
+Management\AdminBundle\Entity\User:
+
+    type: entity
+
+    table: system_user
+
+    repositoryClass: Management\AdminBundle\Repository\UserRepository
+
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+#        username:         { type: string, length: 255, nullable: true }
+        email:            { type: string, length: 255, nullable: false, unique: true }
+        plainPassword:    { type: string, length: 512, nullable: true }
+        password:         { type: text, nullable: false }
+        salt:             { type: string, length: 255, nullable: true }
+        isActive:         { type: boolean, nullable: true }
+        vkId:             { type: string, length: 32, nullable: true }
+        okId:             { type: string, length: 32, nullable: true }
+
+        firstName:        { type: string, length: 64, nullable: false }
+#        middleName:       { type: string, length: 64, nullable: true }
+        lastName:         { type: string, length: 64, nullable: false }
+        fullName:         { type: string, length: 128, nullable: true }
+        sex:              { type: string, length: 8, nullable: true }
+        dateOfBirth:      { type: date, nullable: false }
+        phoneNumber1:     { type: string, length: 16, nullable: false }
+        phoneNumber2:     { type: string, length: 16, nullable: true }
+        availability:     { type: string, length: 128, nullable: true }
+
+        points:           { type: smallint, options: { unsigned: true }, nullable: true }
+        percentageRatio:  { type: string, length: 11, nullable: true }
+        numberOfGames:    { type: smallint, options: { unsigned: true }, nullable: true }
+        experience:       { type: smallint, options: { unsigned: true }, nullable: true }
+        tennisClub:       { type: string, length: 128, nullable: true }
+        briefInfo:        { type: string, length: 512, nullable: true }
+
+        dateOfCreation:   { type: datetime, nullable: false }
+        dateOfChange:     { type: datetime, nullable: false }
+
+    manyToOne:
+        city:
+            targetEntity: Geo\LocationBundle\Entity\City
+            joinColumn:
+                name: city_id
+                referencedColumnName: id
+#            cascade: ["persist"]
+#        tennisClub:
+#            targetEntity: SocialNetwork\TournamentsBundle\Entity\TennisClub
+#            inversedBy: participants
+#            joinColumn:
+#                name: tennis_club_id
+#                referencedColumnName: id
+        skillLevel:
+            targetEntity: SocialNetwork\TournamentsBundle\Entity\SkillLevel
+            joinColumn:
+                name: skill_level_id
+                referencedColumnName: id
+
+    oneToOne: { }
+
+    oneToMany: { }
+
+    manyToMany: { }
+
+    lifecycleCallbacks: { }
